@@ -1,0 +1,44 @@
+<div class="pin-screen">
+  <!-- Header -->
+  <div class="pin-header">
+    <h1 class="pin-title">Enter PIN</h1>
+    <p class="pin-subtitle">Enter your 6-digit PIN to continue</p>
+  </div>
+
+  <!-- PIN Dots Display -->
+  <div class="pin-dots">
+    <span
+      *ngFor="let dot of pinDots; let i = index"
+      class="pin-dot"
+      [class.pin-dot--filled]="i < enteredPin.length"
+    >
+    </span>
+  </div>
+
+  <!-- Error Message -->
+  <div class="pin-error" *ngIf="errorMessage">
+    <span>{{ errorMessage }}</span>
+  </div>
+
+  <!-- Numeric Keypad -->
+  <div class="keypad">
+    <button
+      class="keypad-btn"
+      *ngFor="let digit of ['1', '2', '3', '4', '5', '6', '7', '8', '9']"
+      (click)="onKeyPress(digit)"
+    >
+      {{ digit }}
+    </button>
+
+    <!-- Empty space, 0, Backspace -->
+    <div class="keypad-btn keypad-btn--empty"></div>
+    <button class="keypad-btn" (click)="onKeyPress('0')">0</button>
+    <button class="keypad-btn keypad-btn--delete" (click)="onDelete()">⌫</button>
+  </div>
+
+  <!-- Continue Button -->
+  <button class="btn-continue" [disabled]="pinForm.invalid || isLoading" (click)="onSubmit()">
+    <span *ngIf="!isLoading">Continue</span>
+    <span *ngIf="isLoading">Verifying...</span>
+  </button>
+</div>
