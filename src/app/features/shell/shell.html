@@ -1,0 +1,49 @@
+<div class="shell-layout">
+  <!-- Top header bar -->
+  <header class="shell-header">
+    <!-- Dynamic role/mode pill (center) -->
+    <button class="shell-header__role">
+      <span>{{ modeLabel }}</span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+
+    <!-- Right: help + avatar with notification dot -->
+    <div class="shell-header__right">
+      <button class="shell-header__help" aria-label="Help">
+        <mat-icon>help_outline</mat-icon>
+      </button>
+      <button class="shell-header__avatar" (click)="openProfile()" aria-label="Open profile">
+        <span class="avatar-initials">{{ initials }}</span>
+        <span class="avatar-dot"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main content area -->
+  <main class="shell-content">
+    <router-outlet />
+  </main>
+
+  <!-- Bottom Tab Bar -->
+  <nav class="bottom-tabs">
+    <a class="tab-item" routerLink="housekeeping" routerLinkActive="tab-item--active">
+      <mat-icon class="tab-icon">cleaning_services</mat-icon>
+      <span class="tab-label">Housekeeping</span>
+    </a>
+
+    <a class="tab-item" routerLink="service-orders" routerLinkActive="tab-item--active">
+      <mat-icon class="tab-icon">build</mat-icon>
+      <span class="tab-label">Service Orders</span>
+    </a>
+
+    <a class="tab-item" routerLink="guests" routerLinkActive="tab-item--active">
+      <mat-icon class="tab-icon">person_outline</mat-icon>
+      <span class="tab-label">Guests</span>
+    </a>
+
+    <button class="tab-item tab-item--btn" (click)="openMore()">
+      <mat-icon class="tab-icon">more_horiz</mat-icon>
+      <span class="tab-label">More</span>
+    </button>
+  </nav>
+</div>

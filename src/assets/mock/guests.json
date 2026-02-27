@@ -1,0 +1,79 @@
+{
+  "guests": [
+    {
+      "id": 1,
+      "name": "Tissanie Sayles",
+      "room": "Suite 394",
+      "checkIn": "19 Sep 2025",
+      "checkOut": "20 Sep 2025",
+      "status": "in-house",
+      "statusLabel": "In House",
+      "vip": true,
+      "vipLevel": 1,
+      "group": "AMA",
+      "adults": 1,
+      "children": 1,
+      "transfers": 1
+    },
+    {
+      "id": 2,
+      "name": "Brendan Tromp",
+      "room": "Suite 269",
+      "checkIn": "19 Sep 2025",
+      "checkOut": "20 Sep 2025",
+      "status": "arriving",
+      "statusLabel": "Arriving",
+      "vip": false,
+      "vipLevel": 0,
+      "group": "Tincidunt",
+      "adults": 0,
+      "children": 0,
+      "transfers": 0
+    },
+    {
+      "id": 3,
+      "name": "Ida Bradtke",
+      "room": "Suite 227",
+      "checkIn": "19 Sep 2025",
+      "checkOut": "20 Sep 2025",
+      "status": "departing",
+      "statusLabel": "Departing",
+      "vip": true,
+      "vipLevel": 1,
+      "group": "Blandit",
+      "adults": 0,
+      "children": 0,
+      "transfers": 0
+    },
+    {
+      "id": 4,
+      "name": "Tricia Jacobs",
+      "room": "Suite 198",
+      "checkIn": "19 Sep 2025",
+      "checkOut": "20 Sep 2025",
+      "status": "in-house",
+      "statusLabel": "In House",
+      "vip": false,
+      "vipLevel": 0,
+      "group": "Lorem",
+      "adults": 2,
+      "children": 0,
+      "transfers": 1
+    },
+    {
+      "id": 5,
+      "name": "Michael Brown",
+      "room": "Room 102",
+      "checkIn": "23 Sep 2025",
+      "checkOut": "25 Sep 2025",
+      "status": "arriving",
+      "statusLabel": "Arriving",
+      "vip": false,
+      "vipLevel": 0,
+      "group": "Ipsum",
+      "adults": 1,
+      "children": 0,
+      "transfers": 0
+    }
+  ]
+}

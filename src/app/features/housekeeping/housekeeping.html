@@ -1,0 +1,157 @@
+<div class="hk-page">
+  <!-- Page title bar -->
+  <div class="hk-title-bar">
+    <h1 class="hk-title">
+      Cleaning - All Rooms
+      <mat-icon class="hk-title__arrow">expand_more</mat-icon>
+    </h1>
+  </div>
+
+  <!-- Offline Banner -->
+  @if (isOffline) {
+    <div class="offline-banner">
+      <mat-icon>wifi_off</mat-icon> You are offline. Showing cached data.
+    </div>
+  }
+
+  <!-- Toolbar: Search | Filters | Sort -->
+  <div class="hk-toolbar">
+    <button
+      class="toolbar-btn toolbar-btn--icon"
+      (click)="showSearch = !showSearch"
+      aria-label="Search"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+    <button
+      class="toolbar-btn"
+      [class.toolbar-btn--active]="activeFilterCount > 0"
+      (click)="setFilter('all')"
+    >
+      <mat-icon>filter_list</mat-icon>
+      Filters
+      @if (activeFilterCount > 0) {
+        ({{ activeFilterCount }})
+      }
+    </button>
+    <button class="toolbar-btn" (click)="toggleSort()">
+      <mat-icon>sort</mat-icon>
+      {{ sortLabel }}
+    </button>
+  </div>
+
+  <!-- Filter Chips (secondary row) -->
+  <div class="hk-filters">
+    @for (f of filters; track f.value) {
+      <button
+        class="filter-chip"
+        [class.filter-chip--active]="activeFilter === f.value"
+        (click)="setFilter(f.value)"
+      >
+        {{ f.label }}
+      </button>
+    }
+  </div>
+
+  <!-- Room count -->
+  @if (!isLoading) {
+    <div class="hk-count">{{ (totalCount$ | async) ?? 0 }} rooms</div>
+  }
+
+  <!-- Loading state -->
+  @if (isLoading) {
+    <div class="hk-loading">Loading assignments…</div>
+  }
+
+  <!-- Assignment Cards -->
+  @if (!isLoading) {
+    <div class="hk-list">
+      @for (item of (displayedAssignments$ | async) ?? []; track item.id) {
+        <div class="assignment-card">
+          <!-- Card top: room name + action button -->
+          <div class="card-top">
+            <span class="card-room-name">{{ item.room }}</span>
+            <button class="card-action-btn" [class]="statusActionClass(item.status)">
+              <mat-icon>{{ statusActionIcon(item.status) }}</mat-icon>
+            </button>
+          </div>
+
+          <!-- Assignee row -->
+          <div class="card-assignee-row">
+            <mat-icon class="assignee-icon">badge</mat-icon>
+            <span class="assignee-name">{{ item.assignee }}</span>
+          </div>
+
+          <!-- Status row: dot + status + rush + started -->
+          <div class="card-status-row">
+            <span class="status-dot status-dot--{{ item.status }}"></span>
+            <span class="status-label status-label--{{ item.status }}">{{
+              item.status | titlecase
+            }}</span>
+            @if (item.isRush) {
+              <span class="rush-badge">
+                <mat-icon>directions_run</mat-icon>
+                Room Rush
+              </span>
+            }
+            @if (item.startedAt) {
+              <span class="started-at">
+                <mat-icon>play_arrow</mat-icon>
+                Started at {{ item.startedAt }}
+              </span>
+            }
+          </div>
+
+          <!-- Meta row: clean type | points | duration | copy -->
+          <div class="card-meta-row">
+            <span class="meta-item">
+              <mat-icon>bed</mat-icon>
+              {{ item.cleanType }}
+            </span>
+            <span class="meta-sep">·</span>
+            <span class="meta-item">
+              <mat-icon>star</mat-icon>
+              {{ item.points }} points
+            </span>
+            <span class="meta-sep">·</span>
+            <span class="meta-item">
+              <mat-icon>hourglass_empty</mat-icon>
+              {{ item.duration }} min
+            </span>
+            <span class="meta-item meta-item--copy">
+              <mat-icon>content_copy</mat-icon>
+            </span>
+          </div>
+
+          <!-- Guest row -->
+          @if (item.guest) {
+            <div class="card-guest-row">
+              <mat-icon
+                class="guest-status-icon"
+                [class.guest-status-icon--out]="item.guest.checkedOut"
+              >
+                {{ item.guest.checkedOut ? 'cancel' : 'check_circle' }}
+              </mat-icon>
+              <span class="guest-name">{{ item.guest.name }}</span>
+              @if (item.guest.vipLevel > 0) {
+                <mat-icon class="guest-crown">workspace_premium</mat-icon>
+                <span class="guest-vip">X{{ item.guest.vipLevel }}</span>
+              }
+              <span class="guest-period">{{ item.guest.period }}</span>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- Empty state -->
+      @if (((displayedAssignments$ | async) ?? []).length === 0) {
+        <div class="hk-empty">No assignments for this filter.</div>
+      }
+    </div>
+  }
+
+  <!-- FAB -->
+  <button class="hk-fab" aria-label="Actions">
+    <mat-icon>format_list_bulleted</mat-icon>
+  </button>
+</div>

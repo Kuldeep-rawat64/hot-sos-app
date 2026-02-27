@@ -1,0 +1,20 @@
+<div class="more-sheet">
+  <div class="more-sheet__handle"></div>
+  <div class="more-sheet__header">
+    <h2 class="more-sheet__title">More</h2>
+    <button class="more-sheet__close" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <ul class="more-sheet__list">
+    @for (item of menuItems; track item.label) {
+      <li class="more-sheet__item" (click)="onItemClick(item)">
+        <span class="more-sheet__item-icon"
+          ><mat-icon>{{ item.icon }}</mat-icon></span
+        >
+        <span class="more-sheet__item-label">{{ item.label }}</span>
+        <mat-icon class="more-sheet__item-arrow">chevron_right</mat-icon>
+      </li>
+    }
+  </ul>
+</div>

@@ -1,0 +1,188 @@
+{
+  "assignments": [
+    {
+      "id": 1,
+      "room": "Suite 394",
+      "floor": "3",
+      "type": "Suite",
+      "status": "in-progress",
+      "assignee": "John Watson",
+      "priority": "high",
+      "checkOut": "11:00",
+      "checkIn": "14:00",
+      "notes": "",
+      "cleanType": "Stay Over Full Linen",
+      "points": 620,
+      "duration": 45,
+      "isRush": true,
+      "startedAt": "7:40 AM",
+      "guest": {
+        "name": "Jenna Marks",
+        "vipLevel": 1,
+        "period": "19 Sep 2025 - 20 Sep 2025, 10:00 AM",
+        "checkedOut": false
+      }
+    },
+    {
+      "id": 2,
+      "room": "Suite 394",
+      "floor": "3",
+      "type": "Suite",
+      "status": "dirty",
+      "assignee": "John Watson",
+      "priority": "high",
+      "checkOut": "11:00",
+      "checkIn": "14:00",
+      "notes": "",
+      "cleanType": "Departure Clean",
+      "points": 120,
+      "duration": 45,
+      "isRush": false,
+      "startedAt": null,
+      "guest": {
+        "name": "Jenna Marks",
+        "vipLevel": 1,
+        "period": "19 Sep 2025 - 20 Sep 2025, 10:00 AM",
+        "checkedOut": true
+      }
+    },
+    {
+      "id": 3,
+      "room": "Suite 394",
+      "floor": "3",
+      "type": "Suite",
+      "status": "dirty",
+      "assignee": "John Watson",
+      "priority": "medium",
+      "checkOut": "12:00",
+      "checkIn": "15:00",
+      "notes": "",
+      "cleanType": "Departure Clean",
+      "points": 200,
+      "duration": 30,
+      "isRush": false,
+      "startedAt": null,
+      "guest": {
+        "name": "Michael Lee",
+        "vipLevel": 2,
+        "period": "18 Sep 2025 - 20 Sep 2025, 12:00 PM",
+        "checkedOut": true
+      }
+    },
+    {
+      "id": 4,
+      "room": "Room 201",
+      "floor": "2",
+      "type": "Deluxe",
+      "status": "clean",
+      "assignee": "Susan K.",
+      "priority": "low",
+      "checkOut": "10:00",
+      "checkIn": "13:00",
+      "notes": "VIP guest",
+      "cleanType": "Stay Over",
+      "points": 80,
+      "duration": 20,
+      "isRush": false,
+      "startedAt": "9:15 AM",
+      "guest": {
+        "name": "Emily Chen",
+        "vipLevel": 0,
+        "period": "17 Sep 2025 - 21 Sep 2025, 1:00 PM",
+        "checkedOut": false
+      }
+    },
+    {
+      "id": 5,
+      "room": "Room 101",
+      "floor": "1",
+      "type": "Standard",
+      "status": "dirty",
+      "assignee": "Maria G.",
+      "priority": "high",
+      "checkOut": "11:00",
+      "checkIn": "14:00",
+      "notes": "Extra towels requested",
+      "cleanType": "Departure Clean",
+      "points": 95,
+      "duration": 35,
+      "isRush": true,
+      "startedAt": null,
+      "guest": {
+        "name": "Carlos Rivera",
+        "vipLevel": 0,
+        "period": "15 Sep 2025 - 20 Sep 2025, 11:00 AM",
+        "checkedOut": false
+      }
+    },
+    {
+      "id": 6,
+      "room": "Room 302",
+      "floor": "3",
+      "type": "Standard",
+      "status": "dirty",
+      "assignee": "Unassigned",
+      "priority": "high",
+      "checkOut": "11:00",
+      "checkIn": "14:00",
+      "notes": "Rush clean needed",
+      "cleanType": "Departure Clean",
+      "points": 75,
+      "duration": 30,
+      "isRush": true,
+      "startedAt": null,
+      "guest": {
+        "name": "Tom Bradley",
+        "vipLevel": 0,
+        "period": "19 Sep 2025 - 20 Sep 2025, 11:00 AM",
+        "checkedOut": false
+      }
+    },
+    {
+      "id": 7,
+      "room": "Room 401",
+      "floor": "4",
+      "type": "Suite",
+      "status": "in-progress",
+      "assignee": "Tom B.",
+      "priority": "medium",
+      "checkOut": "09:00",
+      "checkIn": "13:00",
+      "notes": "",
+      "cleanType": "Stay Over Full Linen",
+      "points": 410,
+      "duration": 50,
+      "isRush": false,
+      "startedAt": "8:55 AM",
+      "guest": {
+        "name": "Laura Kim",
+        "vipLevel": 3,
+        "period": "16 Sep 2025 - 22 Sep 2025, 1:00 PM",
+        "checkedOut": false
+      }
+    },
+    {
+      "id": 8,
+      "room": "Room 102",
+      "floor": "1",
+      "type": "Deluxe",
+      "status": "inspected",
+      "assignee": "Carlos R.",
+      "priority": "low",
+      "checkOut": "12:00",
+      "checkIn": "15:00",
+      "notes": "Inspection complete",
+      "cleanType": "Departure Clean",
+      "points": 110,
+      "duration": 25,
+      "isRush": false,
+      "startedAt": "10:05 AM",
+      "guest": {
+        "name": "Sarah Patel",
+        "vipLevel": 1,
+        "period": "19 Sep 2025 - 20 Sep 2025, 3:00 PM",
+        "checkedOut": true
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
 import { vi } from 'vitest';
 import { PinLogin } from './pin-login';
@@ -10,15 +10,19 @@ import { StorageService } from '../../../core/services/storage.service';
 describe('PinLogin', () => {
   let component: PinLogin;
   let authServiceMock: { login: ReturnType<typeof vi.fn> };
-  let storageServiceMock: { setToken: ReturnType<typeof vi.fn> };
+  let storageServiceMock: { setToken: ReturnType<typeof vi.fn>; isLoggedIn: ReturnType<typeof vi.fn> };
 
   beforeEach(async () => {
     authServiceMock = { login: vi.fn() };
-    storageServiceMock = { setToken: vi.fn().mockResolvedValue(undefined) };
+    storageServiceMock = {
+      setToken: vi.fn().mockResolvedValue(undefined),
+      isLoggedIn: vi.fn().mockResolvedValue(false),
+    };
 
     await TestBed.configureTestingModule({
-      imports: [PinLogin, ReactiveFormsModule, RouterTestingModule],
+      imports: [PinLogin, ReactiveFormsModule],
       providers: [
+        provideRouter([]),
         { provide: AuthService, useValue: authServiceMock },
         { provide: StorageService, useValue: storageServiceMock },
       ],

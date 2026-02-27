@@ -6,6 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 export interface AuthResponse {
   success: boolean;
   token?: string;
+  name?: string;
   error?: string;
 }
 
@@ -18,20 +19,22 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(pin: string): Observable<AuthResponse> {
-    // Check network availability first
-    if (!navigator.onLine) {
+    // Check network availability first (navigator not available in SSR)
+    if (typeof navigator !== 'undefined' && !navigator.onLine) {
       return of({ success: false, error: 'offline' });
     }
 
-    return this.http.get<{ users: { pin: string; token: string }[] }>(this.mockApiUrl).pipe(
-      map((data) => {
-        const user = data.users.find((u) => u.pin === pin);
-        if (user) {
-          return { success: true, token: user.token };
-        }
-        return { success: false, error: 'invalid-pin' };
-      }),
-      catchError(() => of({ success: false, error: 'network-error' })),
-    );
+    return this.http
+      .get<{ users: { pin: string; token: string; name: string }[] }>(this.mockApiUrl)
+      .pipe(
+        map((data) => {
+          const user = data.users.find((u) => u.pin === pin);
+          if (user) {
+            return { success: true, token: user.token, name: user.name };
+          }
+          return { success: false, error: 'invalid-pin' };
+        }),
+        catchError(() => of({ success: false, error: 'network-error' })),
+      );
   }
 }

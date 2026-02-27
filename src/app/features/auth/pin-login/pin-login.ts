@@ -4,10 +4,12 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { StorageService } from '../../../core/services/storage.service';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-pin-login',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule, MatIconModule],
   templateUrl: './pin-login.html',
   styleUrls: ['./pin-login.scss'],
 })
@@ -72,6 +74,7 @@ export class PinLogin implements OnInit {
         this.isLoading = false;
         if (response.success && response.token) {
           await this.storageService.setToken(response.token);
+          if (response.name) await this.storageService.setName(response.name);
           this.router.navigate(['/shell']);
         } else if (response.error === 'offline') {
           this.errorMessage = 'No internet connection. Please try again.';

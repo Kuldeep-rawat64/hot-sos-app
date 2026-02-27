@@ -1,0 +1,57 @@
+<div class="profile-page">
+  <!-- Top toolbar -->
+  <div class="profile-toolbar">
+    <button class="profile-toolbar__btn" (click)="goBack()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <button class="profile-toolbar__btn profile-toolbar__btn--right">
+      <mat-icon>help_outline</mat-icon>
+    </button>
+  </div>
+
+  <!-- Avatar -->
+  <div class="profile-avatar">
+    <div class="profile-avatar__circle">
+      <span class="profile-avatar__initials">{{ initials }}</span>
+    </div>
+  </div>
+
+  <!-- Name -->
+  <h1 class="profile-name">{{ userName }}</h1>
+
+  <!-- Duty status badge -->
+  <button class="profile-status">
+    <span class="profile-status__label">{{ dutyStatus }}</span>
+    <mat-icon class="profile-status__arrow">expand_more</mat-icon>
+  </button>
+
+  <!-- Menu list -->
+  <ul class="profile-menu">
+    @for (item of menuItems; track item.label) {
+      <li
+        class="profile-menu__item"
+        [class.profile-menu__item--danger]="item.danger"
+        (click)="onMenuItem(item)"
+      >
+        <span class="profile-menu__icon-wrap" [class.profile-menu__icon-wrap--danger]="item.danger">
+          <mat-icon>{{ item.icon }}</mat-icon>
+        </span>
+        <div class="profile-menu__content">
+          <span class="profile-menu__label" [class.profile-menu__label--danger]="item.danger">{{
+            item.label
+          }}</span>
+          @if (item.subtitle) {
+            <span class="profile-menu__subtitle">{{ item.subtitle }}</span>
+          }
+        </div>
+        @if (item.badge) {
+          <span class="profile-menu__badge">{{ item.badge }}</span>
+        }
+        <mat-icon class="profile-menu__arrow">chevron_right</mat-icon>
+      </li>
+    }
+  </ul>
+
+  <!-- Version -->
+  <div class="profile-version">{{ version }}</div>
+</div>

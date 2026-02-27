@@ -1,0 +1,372 @@
+// ─── Page shell ───────────────────────────────────────────────
+.so-page {
+  background: #f4f5f7;
+  min-height: 100%;
+  padding-bottom: 80px;
+  position: relative;
+}
+
+// ─── Title bar ────────────────────────────────────────────────
+.so-title-bar {
+  padding: 14px 16px 4px;
+  background: #fff;
+}
+
+.title-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  .chevron {
+    font-size: 22px;
+    color: #555;
+  }
+}
+
+// ─── Toolbar ──────────────────────────────────────────────────
+.so-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid #d0d0d0;
+  background: #f5f5f5;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  position: relative;
+
+  mat-icon { font-size: 18px; height: 18px; width: 18px; }
+
+  &--icon {
+    padding: 6px 10px;
+  }
+
+  &--active {
+    border-color: #1a73e8;
+    background: #e8f0fe;
+    color: #1a73e8;
+  }
+
+  &--sort {
+    margin-left: auto;
+    white-space: nowrap;
+  }
+}
+
+.filter-badge {
+  background: #1a73e8;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 0 5px;
+  line-height: 16px;
+  margin-left: 2px;
+}
+
+// ─── Filter chips ─────────────────────────────────────────────
+.so-filter-chips {
+  display: flex;
+  gap: 8px;
+  padding: 10px 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.so-chip {
+  white-space: nowrap;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid #d0d0d0;
+  background: #f5f5f5;
+  font-size: 13px;
+  cursor: pointer;
+  color: #333;
+
+  &--active {
+    background: #1a73e8;
+    color: #fff;
+    border-color: #1a73e8;
+  }
+}
+
+// ─── Misc ─────────────────────────────────────────────────────
+.offline-banner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff3cd;
+  color: #856404;
+  font-size: 13px;
+  padding: 10px 16px;
+}
+
+.so-loading, .so-empty {
+  text-align: center;
+  padding: 48px 16px;
+  color: #757575;
+  font-size: 15px;
+}
+
+.so-count {
+  padding: 10px 16px 4px;
+  font-size: 13px;
+  color: #757575;
+  font-weight: 500;
+}
+
+// ─── Card list ────────────────────────────────────────────────
+.so-list {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+// ─── Order card ───────────────────────────────────────────────
+.so-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 14px 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  // — Row 1: title + action btn —
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__titles {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__subtitle {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  // — Row 2: assignee —
+  &__assignee {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    .assignee-icon {
+      font-size: 16px;
+      height: 16px;
+      width: 16px;
+      color: #aaa;
+    }
+  }
+
+  .assignee-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a73e8;
+
+    &--unassigned {
+      color: #bbb;
+      font-weight: 500;
+    }
+  }
+
+  // — Row 3: priority + escalated + started —
+  &__status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  // — Row 4: meta —
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .meta-icon {
+    font-size: 15px;
+    height: 15px;
+    width: 15px;
+    color: #999;
+
+    &--copy { color: #bbb; }
+  }
+
+  .meta-time {
+    font-size: 12px;
+    color: #888;
+  }
+
+  .meta-attach {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 12px;
+    color: #888;
+  }
+
+  // — Row 5: guest —
+  &__guest {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-top: 4px;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .guest-crown {
+    font-size: 15px;
+    height: 15px;
+    width: 15px;
+    color: #f9a825;
+  }
+
+  .guest-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .guest-vip {
+    font-size: 11px;
+    color: #888;
+    margin-left: 2px;
+  }
+}
+
+// ─── Action button ────────────────────────────────────────────
+.action-btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  mat-icon {
+    font-size: 22px;
+    height: 22px;
+    width: 22px;
+    color: #fff;
+  }
+
+  &--green  { background: #34a853; }
+  &--navy   { background: #1a2e6c; }
+  &--maroon { background: #8b0000; }
+}
+
+// ─── Priority dot ─────────────────────────────────────────────
+.priority-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &--high   { background: #e53935; }
+  &--medium { background: #fb8c00; }
+  &--low    { background: #43a047; }
+}
+
+.priority-code {
+  font-size: 12px;
+  font-weight: 700;
+  color: #555;
+}
+
+// ─── Escalated badge ──────────────────────────────────────────
+.escalated-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: #fdecea;
+  color: #c62828;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 2px 8px;
+
+  mat-icon {
+    font-size: 13px;
+    height: 13px;
+    width: 13px;
+  }
+}
+
+// ─── Started at ───────────────────────────────────────────────
+.started-at {
+  font-size: 12px;
+  color: #34a853;
+  font-weight: 500;
+  margin-left: auto;
+}
+
+// ─── FAB ──────────────────────────────────────────────────────
+.so-fab {
+  position: fixed;
+  bottom: 72px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #1a2e6c;
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+
+  mat-icon {
+    font-size: 28px;
+    height: 28px;
+    width: 28px;
+  }
+}
+

@@ -1,0 +1,126 @@
+<div class="so-page">
+  <!-- Page title bar -->
+  <div class="so-title-bar">
+    <button class="title-pill">All Work <mat-icon class="chevron">expand_more</mat-icon></button>
+  </div>
+
+  <!-- Toolbar: search | Filters | Sort -->
+  <div class="so-toolbar">
+    <button class="toolbar-btn toolbar-btn--icon">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button class="toolbar-btn" [class.toolbar-btn--active]="activeFilterCount > 0">
+      <mat-icon>tune</mat-icon>
+      Filters
+      @if (activeFilterCount > 0) {
+        <span class="filter-badge">{{ activeFilterCount }}</span>
+      }
+    </button>
+    <button class="toolbar-btn toolbar-btn--sort" (click)="toggleSort()">
+      <mat-icon>swap_vert</mat-icon>
+      {{ sortLabel }}
+    </button>
+  </div>
+
+  <!-- Filter chips -->
+  <div class="so-filter-chips">
+    @for (f of filters; track f.value) {
+      <button
+        class="so-chip"
+        [class.so-chip--active]="activeFilter === f.value"
+        (click)="setFilter(f.value)"
+      >
+        {{ f.label }}
+      </button>
+    }
+  </div>
+
+  @if (isOffline) {
+    <div class="offline-banner"><mat-icon>wifi_off</mat-icon> Offline — no orders available.</div>
+  }
+
+  @if (isLoading) {
+    <div class="so-loading">Loading orders…</div>
+  }
+
+  @if (!isLoading) {
+    <!-- Count row -->
+    <div class="so-count">
+      @if (totalCount$ | async; as total) {
+        <span>{{ total }} orders</span>
+      }
+    </div>
+
+    <!-- Order list -->
+    <div class="so-list">
+      @for (order of (displayedOrders$ | async) ?? []; track order.id) {
+        <div class="so-card">
+          <!-- Row 1: title + subtitle + action btn -->
+          <div class="so-card__top">
+            <div class="so-card__titles">
+              <div class="so-card__title">{{ order.title }}</div>
+              <div class="so-card__subtitle">{{ order.subtitle }}</div>
+            </div>
+            <button class="action-btn" [ngClass]="actionClass(order.actionType)">
+              <mat-icon>{{ actionIcon(order.actionType) }}</mat-icon>
+            </button>
+          </div>
+
+          <!-- Row 2: assignee -->
+          <div class="so-card__assignee">
+            <mat-icon class="assignee-icon">person</mat-icon>
+            @if (order.isAssigned) {
+              <span class="assignee-name">{{ order.assignee }}</span>
+            } @else {
+              <span class="assignee-name assignee-name--unassigned">Assign</span>
+            }
+          </div>
+
+          <!-- Row 3: priority dot + code + escalated badge + started-at -->
+          <div class="so-card__status">
+            <span class="priority-dot priority-dot--{{ order.priorityLevel }}"></span>
+            <span class="priority-code">{{ order.priority }}</span>
+            @if (order.isEscalated) {
+              <span class="escalated-badge"> <mat-icon>bolt</mat-icon> Escalated </span>
+            }
+            @if (order.startedAt) {
+              <span class="started-at">Started at {{ order.startedAt }}</span>
+            }
+          </div>
+
+          <!-- Row 4: order-type icon + timeAgo + copy + attachments -->
+          <div class="so-card__meta">
+            <mat-icon class="meta-icon">{{ orderTypeIcon(order.orderType) }}</mat-icon>
+            <span class="meta-time">{{ order.timeAgo }}</span>
+            @if (order.hasCopy) {
+              <mat-icon class="meta-icon meta-icon--copy">content_copy</mat-icon>
+            }
+            @if (order.attachments > 0) {
+              <span class="meta-attach">
+                <mat-icon class="meta-icon">attach_file</mat-icon>{{ order.attachments }}
+              </span>
+            }
+          </div>
+
+          <!-- Row 5 (optional): guest -->
+          @if (order.guest) {
+            <div class="so-card__guest">
+              <mat-icon class="guest-crown">workspace_premium</mat-icon>
+              <span class="guest-name">{{ order.guest.name }}</span>
+              <span class="guest-vip">VIP×{{ order.guest.vipLevel }}</span>
+            </div>
+          }
+        </div>
+      }
+
+      @if ((displayedOrders$ | async)?.length === 0) {
+        <div class="so-empty">No service orders.</div>
+      }
+    </div>
+  }
+
+  <!-- FAB -->
+  <button class="so-fab">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,112 @@
+<div class="guests-page">
+  <!-- Page title bar -->
+  <div class="guests-title-bar">
+    <button class="title-pill">All Guests <mat-icon class="chevron">expand_more</mat-icon></button>
+  </div>
+
+  <!-- Toolbar: search | Filters | Sort -->
+  <div class="guests-toolbar">
+    <button class="toolbar-btn toolbar-btn--icon">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button class="toolbar-btn" [class.toolbar-btn--active]="activeFilterCount > 0">
+      <mat-icon>filter_list</mat-icon>
+      Filters
+      @if (activeFilterCount > 0) {
+        <span class="filter-badge">{{ activeFilterCount }}</span>
+      }
+    </button>
+    <button class="toolbar-btn toolbar-btn--sort">
+      <mat-icon>swap_vert</mat-icon>
+      {{ sortLabel }}
+    </button>
+  </div>
+
+  <!-- Filter chips -->
+  <div class="guests-filter-chips">
+    @for (f of filters; track f.value) {
+      <button
+        class="guests-chip"
+        [class.guests-chip--active]="activeFilter === f.value"
+        (click)="setFilter(f.value)"
+      >
+        {{ f.label }}
+      </button>
+    }
+  </div>
+
+  @if (isOffline) {
+    <div class="offline-banner"><mat-icon>wifi_off</mat-icon> Offline — showing cached data.</div>
+  }
+
+  @if (isLoading) {
+    <div class="guests-loading">Loading guests…</div>
+  }
+
+  @if (!isLoading) {
+    <!-- Count -->
+    <div class="guests-count">
+      @if (totalCount$ | async; as total) {
+        <span>{{ total }} rooms</span>
+      }
+    </div>
+
+    <!-- Guest list -->
+    <div class="guests-list">
+      @for (guest of (displayedGuests$ | async) ?? []; track guest.id) {
+        <div class="guest-card">
+          <!-- Row 1: name + crown + vip level -->
+          <div class="guest-card__name-row">
+            <span class="guest-name">{{ guest.name }}</span>
+            @if (guest.vip) {
+              <mat-icon class="vip-crown">workspace_premium</mat-icon>
+              <span class="vip-level">X{{ guest.vipLevel }}</span>
+            }
+          </div>
+
+          <!-- Row 2: room / suite -->
+          <div class="guest-card__room">{{ guest.room }}</div>
+
+          <!-- Row 3: date range + status -->
+          <div class="guest-card__stay">
+            <mat-icon class="stay-icon">sync</mat-icon>
+            <span class="stay-dates">{{ guest.checkIn }} - {{ guest.checkOut }}</span>
+            <mat-icon class="status-icon status-icon--{{ guest.status }}">{{
+              statusIcon(guest.status)
+            }}</mat-icon>
+            <span class="status-label status-label--{{ guest.status }}">{{
+              guest.statusLabel
+            }}</span>
+          </div>
+
+          <!-- Row 4: group + counts -->
+          <div class="guest-card__meta">
+            <mat-icon class="meta-icon">group</mat-icon>
+            <span class="meta-group">{{ guest.group }}</span>
+            @if (guest.adults > 0) {
+              <mat-icon class="meta-icon">person</mat-icon>
+              <span class="meta-count">{{ guest.adults }}</span>
+            }
+            @if (guest.children > 0) {
+              <mat-icon class="meta-icon">child_care</mat-icon>
+              <span class="meta-count">{{ guest.children }}</span>
+            }
+            @if (guest.transfers > 0) {
+              <mat-icon class="meta-icon">compare_arrows</mat-icon>
+              <span class="meta-count">{{ guest.transfers }}</span>
+            }
+          </div>
+        </div>
+      }
+
+      @if ((displayedGuests$ | async)?.length === 0) {
+        <div class="guests-empty">No guests found.</div>
+      }
+    </div>
+  }
+
+  <!-- FAB -->
+  <button class="guests-fab">
+    <mat-icon>list</mat-icon>
+  </button>
+</div>

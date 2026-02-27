@@ -1,0 +1,108 @@
+{
+  "serviceOrders": [
+    {
+      "id": 1,
+      "title": "Air Handler 1",
+      "subtitle": "Air Handling Unit - Repair/Replace",
+      "orderType": "Service Order",
+      "room": "101",
+      "assignee": "John Watson",
+      "isAssigned": true,
+      "priority": "P2",
+      "priorityLevel": "medium",
+      "status": "in-progress",
+      "isEscalated": true,
+      "startedAt": "7:40 AM",
+      "timeAgo": "6h ago",
+      "attachments": 3,
+      "hasCopy": true,
+      "actionType": "play",
+      "guest": {
+        "name": "Jenna Marks",
+        "vipLevel": 1
+      }
+    },
+    {
+      "id": 2,
+      "title": "Suite 394",
+      "subtitle": "Cleaning/Disinfecting - Inspection",
+      "orderType": "Inspection",
+      "room": "394",
+      "assignee": null,
+      "isAssigned": false,
+      "priority": "P1",
+      "priorityLevel": "high",
+      "status": "open",
+      "isEscalated": false,
+      "startedAt": null,
+      "timeAgo": "6h ago",
+      "attachments": 3,
+      "hasCopy": false,
+      "actionType": "bell",
+      "guest": null
+    },
+    {
+      "id": 3,
+      "title": "Suite 245",
+      "subtitle": "Houseperson - Delivery",
+      "orderType": "Delivery Order",
+      "room": "245",
+      "assignee": "John Watson",
+      "isAssigned": true,
+      "priority": "P3",
+      "priorityLevel": "low",
+      "status": "open",
+      "isEscalated": false,
+      "startedAt": null,
+      "timeAgo": "6h ago",
+      "attachments": 0,
+      "hasCopy": true,
+      "actionType": "remove",
+      "guest": null
+    },
+    {
+      "id": 4,
+      "title": "Room 102",
+      "subtitle": "Extra pillows needed",
+      "orderType": "Service Order",
+      "room": "102",
+      "assignee": "Maria G.",
+      "isAssigned": true,
+      "priority": "P2",
+      "priorityLevel": "medium",
+      "status": "open",
+      "isEscalated": false,
+      "startedAt": null,
+      "timeAgo": "2h ago",
+      "attachments": 0,
+      "hasCopy": false,
+      "actionType": "play",
+      "guest": {
+        "name": "Michael Brown",
+        "vipLevel": 0
+      }
+    },
+    {
+      "id": 5,
+      "title": "Room 201",
+      "subtitle": "AC not working properly",
+      "orderType": "Service Order",
+      "room": "201",
+      "assignee": "Tom B.",
+      "isAssigned": true,
+      "priority": "P1",
+      "priorityLevel": "high",
+      "status": "in-progress",
+      "isEscalated": true,
+      "startedAt": "9:00 AM",
+      "timeAgo": "3h ago",
+      "attachments": 2,
+      "hasCopy": true,
+      "actionType": "play",
+      "guest": {
+        "name": "Sarah Johnson",
+        "vipLevel": 2
+      }
+    }
+  ]
+}

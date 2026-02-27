@@ -1,0 +1,414 @@
+$blue: #1a73e8;
+$red: #d32f2f;
+$orange: #f57c00;
+$green: #2e7d32;
+$grey: #757575;
+$navy: #1a237e;
+
+.hk-page {
+  padding: 0;
+  background: #f4f5f7;
+  min-height: 100%;
+  position: relative;
+}
+
+/* ─── Page title bar ─── */
+.hk-title-bar {
+  background: #fff;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.hk-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  &__arrow {
+    font-size: 26px;
+    width: 26px;
+    height: 26px;
+    color: #1a1a1a;
+  }
+}
+
+/* ─── Offline banner ─── */
+.offline-banner {
+  background: #fff3cd;
+  color: #856404;
+  font-size: 13px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #ffc107;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ─── Toolbar row ─── */
+.hk-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px 8px;
+  background: #fff;
+}
+
+.toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1.5px solid #d0d0d0;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+
+  mat-icon {
+    font-size: 17px;
+    width: 17px;
+    height: 17px;
+  }
+
+  &--icon {
+    padding: 6px 10px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &--active {
+    background: #e8f0fe;
+    border-color: $blue;
+    color: $blue;
+  }
+
+  &:hover {
+    background: #f5f5f5;
+  }
+}
+
+/* ─── Secondary filter chips ─── */
+.hk-filters {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.filter-chip {
+  white-space: nowrap;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1.5px solid #d0d0d0;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: #333;
+
+  &--active {
+    background: $blue;
+    color: #fff;
+    border-color: $blue;
+  }
+}
+
+/* ─── Room count ─── */
+.hk-count {
+  font-size: 12px;
+  color: $grey;
+  padding: 8px 16px 4px;
+  font-weight: 500;
+}
+
+/* ─── Loading ─── */
+.hk-loading {
+  text-align: center;
+  padding: 48px 16px;
+  color: $grey;
+  font-size: 15px;
+}
+
+/* ─── Cards list ─── */
+.hk-list {
+  padding: 10px 12px 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ─── Assignment card ─── */
+.assignment-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 14px 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Card top row: room name + action button */
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.card-room-name {
+  font-size: 19px;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: -0.2px;
+}
+
+.card-action-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  mat-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    color: #fff;
+  }
+
+  &--green  { background: $green; }
+  &--navy   { background: $navy; }
+  &--blue   { background: $blue; }
+  &--purple { background: #7b2cbf; }
+}
+
+/* Assignee row */
+.card-assignee-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 7px;
+
+  .assignee-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    color: #1a73e8;
+  }
+
+  .assignee-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a73e8;
+  }
+}
+
+/* Status row */
+.card-status-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &--dirty       { background: $red; }
+  &--in-progress { background: $orange; }
+  &--clean       { background: $green; }
+  &--inspected   { background: $blue; }
+}
+
+.status-label {
+  font-size: 13px;
+  font-weight: 600;
+
+  &--dirty       { color: $red; }
+  &--in-progress { color: $orange; }
+  &--clean       { color: $green; }
+  &--inspected   { color: $blue; }
+}
+
+.rush-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: $red;
+  font-weight: 700;
+  font-size: 12px;
+
+  mat-icon {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.started-at {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: $green;
+  font-weight: 600;
+  font-size: 12px;
+
+  mat-icon {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Meta row */
+.card-meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  color: #555;
+
+  mat-icon {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    color: #777;
+  }
+
+  &--copy {
+    margin-left: auto;
+    color: #999;
+    cursor: pointer;
+  }
+}
+
+.meta-sep {
+  color: #ccc;
+  font-size: 13px;
+}
+
+/* Guest row */
+.card-guest-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+
+.guest-status-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: $green;
+  flex-shrink: 0;
+
+  &--out { color: $red; }
+}
+
+.guest-name {
+  font-weight: 600;
+  color: #222;
+}
+
+.guest-crown {
+  font-size: 15px;
+  width: 15px;
+  height: 15px;
+  color: #777;
+}
+
+.guest-vip {
+  font-size: 12px;
+  font-weight: 700;
+  color: #777;
+}
+
+.guest-period {
+  font-size: 11px;
+  color: $grey;
+  flex: 1 0 100%;
+  margin-top: 2px;
+}
+
+/* ─── Empty state ─── */
+.hk-empty {
+  text-align: center;
+  padding: 48px 16px;
+  color: $grey;
+  font-size: 15px;
+}
+
+/* ─── FAB ─── */
+.hk-fab {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(160, 170, 210, 0.85);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 50;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(130, 145, 200, 0.9);
+  }
+
+  mat-icon {
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+    color: #fff;
+  }
+}
